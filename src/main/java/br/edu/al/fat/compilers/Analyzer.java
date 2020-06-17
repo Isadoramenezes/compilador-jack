@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import static br.edu.al.fat.compilers.Tokenizer.TokenType.*;
-
+// Add comentario para nova Branch
 public class Analyzer {
 
     public static final Token FUNCTION = new Token(KEYWORD, "function");
