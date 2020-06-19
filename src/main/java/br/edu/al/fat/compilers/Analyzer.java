@@ -433,9 +433,6 @@ public class Analyzer {
             throw new RuntimeException("Parse error: expected static or final but got " + tokens.peek().lexeme);
         }
         // const ?
-        if (tokens.peek().equals(CONST)) {
-            children.add(consumeIntoCSTNode(CONST));
-        }
         // type
         children.add(compileType());
         // varName
