@@ -52,14 +52,21 @@ public class Tokenizer {
                 }
             }
             // Identifier
-            if (Character.isLetter(code.charAt(current))) {
+            if (Character.isLetter(code.charAt(current)) ) {
                 int identifierStart = current;
                 int identifierEnd = identifierStart + 1;
-
-                // TODO: permitir também o caractere '_'
-                while (Character.isLetterOrDigit(code.charAt(identifierEnd++))) ;
-                tokens.add(new Token(TokenType.IDENTIFIER, code.substring(identifierStart, identifierEnd - 1)));
-                current = identifierEnd - 2;
+                 while (Character.isLetterOrDigit(code.charAt(current++))){
+                    if (code.charAt(current) == '_'){ 
+                        identifierEnd ++;
+                        while (Character.isLetterOrDigit(code.charAt(current++))){
+                            identifierEnd++;
+                        }
+                    }
+                    identifierEnd++;
+                } 
+                
+                tokens.add(new Token(TokenType.IDENTIFIER, code.substring(identifierStart, identifierEnd-1)));
+                current = identifierEnd-2;
                 continue;
             }
             // IntegerConstant

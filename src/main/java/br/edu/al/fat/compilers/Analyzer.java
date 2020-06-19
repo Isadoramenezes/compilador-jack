@@ -3,12 +3,10 @@ package br.edu.al.fat.compilers;
 import br.edu.al.fat.compilers.CST.CSTNode;
 import br.edu.al.fat.compilers.Tokenizer.Token;
 import br.edu.al.fat.compilers.Tokenizer.TokenType;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
 import static br.edu.al.fat.compilers.Tokenizer.TokenType.*;
 
 public class Analyzer {
@@ -35,6 +33,7 @@ public class Analyzer {
     public static final Token BOOLEAN = new Token(KEYWORD, "boolean");
     public static final Token STATIC = new Token(KEYWORD, "static");
     public static final Token FIELD = new Token(KEYWORD, "field");
+    public static final Token CONST = new Token(KEYWORD, "const");
     public static final Token CONSTRUCTOR = new Token(KEYWORD, "constructor");
     public static final Token VOID = new Token(KEYWORD, "void");
     public static final Token CLASS = new Token(KEYWORD, "class");
@@ -432,6 +431,10 @@ public class Analyzer {
             children.add(consumeIntoCSTNode(FIELD));
         } else {
             throw new RuntimeException("Parse error: expected static or final but got " + tokens.peek().lexeme);
+        }
+        // const ?
+        if (tokens.peek().equals(CONST)) {
+            children.add(consumeIntoCSTNode(CONST));
         }
         // type
         children.add(compileType());

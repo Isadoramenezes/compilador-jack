@@ -76,7 +76,7 @@ public class CST {
         String toXML();
     }
 
-    //  <expression>
+//  <expression>
 //   <term>
 //     <identifier> x </identifier>
 //   </term>
@@ -100,7 +100,7 @@ public class CST {
         }
     }
 
-    // <keyword> class </keyword>
+// <keyword> class </keyword>
 //  -------          -------
 //    nome             nome
     static class TerminalNode implements CSTNode {

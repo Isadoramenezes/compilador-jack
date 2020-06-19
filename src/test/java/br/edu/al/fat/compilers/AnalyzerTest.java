@@ -34,7 +34,7 @@ class AnalyzerTest {
     public void classeComUmaVariavelIntEstatica() {
         Tokenizer tokenizer = new Tokenizer();
         List<Token> tokens = tokenizer.tokenize(
-                "class MinhaClasse { static int x; }"
+                "class Minha_Classe { static int x; }"
         );
 
         Analyzer analyzer = new Analyzer(tokens);

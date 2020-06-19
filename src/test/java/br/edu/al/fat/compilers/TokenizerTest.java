@@ -11,9 +11,9 @@ class TokenizerTest {
 
     @Test
     public void testeDeClasseVazia() {
-        Tokenizer tokenizer = new Tokenizer();
-        String code = "class Main { }";
-        List<Token> tokens = tokenizer.tokenize(code);
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class Main { }";
+        final List<Token> tokens = tokenizer.tokenize(code);
 
         assert tokens.size() == 4;
         assert tokens.get(0).equals(new Token(KEYWORD, "class"));
@@ -24,9 +24,9 @@ class TokenizerTest {
 
     @Test
     public void testeDeStringConstant() {
-        Tokenizer tokenizer = new Tokenizer();
-        String code = "\"Hello World!\"";
-        List<Token> tokens = tokenizer.tokenize(code);
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "\"Hello World!\"";
+        final List<Token> tokens = tokenizer.tokenize(code);
 
         assert tokens.size() == 1;
         assert tokens.get(0).type == STRING_CONSTANT;
@@ -34,14 +34,25 @@ class TokenizerTest {
 
     @Test
     public void testeDeUmIdentificadorQuePareceUmaPalavraChave() {
-        Tokenizer tokenizer = new Tokenizer();
-        String code = "class1 { }";
-        List<Token> tokens = tokenizer.tokenize(code);
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class1 { }";
+        final List<Token> tokens = tokenizer.tokenize(code);
 
         assert tokens.size() == 3;
         assert tokens.get(0).type == IDENTIFIER;
         assert tokens.get(1).type == SYMBOL;
         assert tokens.get(2).type == SYMBOL;
+    }
+
+    @Test
+    public void testeIdentificadorComUnderscore() {
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class uma_nova_classe_muito_bonitinha { }";
+        final List<Token> tokens = tokenizer.tokenize(code);
+
+        assert tokens.size() == 4;
+
+
     }
 
 }
