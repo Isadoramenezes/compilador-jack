@@ -47,12 +47,42 @@ class TokenizerTest {
     @Test
     public void testeIdentificadorComUnderscore() {
         final Tokenizer tokenizer = new Tokenizer();
-        final String code = "class uma_nova_classe_muito_bonitinha { }";
+        final String code = "class uma_nova_classe_muito_bonitinha {" +
+        "\n}";
         final List<Token> tokens = tokenizer.tokenize(code);
 
         assert tokens.size() == 4;
-
-
     }
 
+    @Test
+    public void testeComentarioSimples() {
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class Minha_Classe {" +
+        "// eu sou um comentario simples que acaba aqui \n" +
+        "}";
+        final List<Token> tokens = tokenizer.tokenize(code);
+        assert tokens.size() == 4;
+
+    }
+    @Test
+    public void testeComentarioSimplesQuebrado() {
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class Minha_Classe {" +
+        "// eu sou um comentario simples que tenta acabar \n no lugar errado \n" +
+        "}";
+        final List<Token> tokens = tokenizer.tokenize(code);
+        assert tokens.size() > 4;
+    }
+    @Test
+    public void testeComentarioComQuebra() {
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class Minha_Classe {" +
+        "/* eu sou um comentario com quebra de linha \n"+
+        " que acaba aqui  teste \n"+
+        "*/" +
+        "}";
+        final List<Token> tokens = tokenizer.tokenize(code);
+        assert tokens.size() == 4;
+
+    }
 }

@@ -18,6 +18,37 @@ public class Tokenizer {
         int length = code.length();
         List<Token> tokens = new ArrayList<>();
         for (int current = 0; current < length; current++) {
+
+            //comentarios
+            if(code.charAt(current) == '/'){ 
+                current++;                          
+                if(code.charAt(current++)== '/'){
+                    while(current < length){          
+                        if((code.charAt(current) == '\n')){
+                            current++;
+                            break;
+                        }
+                        current++;
+                    }
+                    current = current-2;
+                } else if(code.charAt(current-=1) == '*'){
+                    current = current+=1;
+                    while(code.charAt(current) != '*'){
+                        current++;
+                        if(code.charAt(current)== '/'){
+                            if(current == length){ 
+                                current++;
+                                break;
+                            } else {
+                                throw new RuntimeException("Seu comentario não tem a indicação de finalização, por favor insiera */");
+                            }
+                        }
+                    }                     
+                current = current +1;
+                }
+                continue;
+            }
+
             // StringConstant
             if (code.charAt(current) == '"') {
                 int stringStart = current++;
@@ -69,6 +100,8 @@ public class Tokenizer {
                 current = identifierEnd-2;
                 continue;
             }
+            
+
             // IntegerConstant
             if (Character.isDigit(code.charAt(current))) {
                 int intStart = current;
