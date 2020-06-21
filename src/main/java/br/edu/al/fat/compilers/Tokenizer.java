@@ -6,7 +6,9 @@ import java.util.Objects;
 
 public class Tokenizer {
 
-    public static final List<String> keywords = List.of("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return");
+    public static final List<String> keywords = List.of("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return",
+    //VVVV Const Aqui VVVV
+    "const");
 
     public static final List<Character> symbols = List.of('{', '}', '(', ')', ',', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', '~', '|', '<', '>', '=');
 
@@ -103,7 +105,7 @@ public class Tokenizer {
             this.tag = type;
         }
     }
-
+//-----------OLHAR AQUI -----------------
     public static class Token {
         public final TokenType type;
         public final String lexeme;
