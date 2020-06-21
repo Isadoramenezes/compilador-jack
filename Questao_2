@@ -1,0 +1,13 @@
+2. Adicionar linha/coluna aos tokens
+
+Os tokens são atualmente compostos por duas informações: o seu tipo e o lexema.-OK-
+-Verificar Capitulo 10-
+https://drive.google.com/file/d/1pQqsu-sdkTblZ5qYhp2yTy0JxSu6NIai/view
+
+Entretanto, ao emitir uma mensagem de erro o compilador não nos diz onde, isto é,
+em qual linha e coluna, foi encontrado um erro. Incremente o tokenizador para que
+ele passe a conter tais informações e exiba elas ao usuário em caso de algum erro na análise sintática.
+
+    throw new RuntimeException("Quebra de linha encontrada dentro de uma StringConstant");
+
+    pegar a linha e coluna de um compilador ou de uma linha de codigo
