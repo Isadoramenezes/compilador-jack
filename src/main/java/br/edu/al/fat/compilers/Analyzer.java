@@ -421,7 +421,7 @@ public class Analyzer {
 
         return CST.parameterListNode(children);
     }
-
+// 4° questão
     private CSTNode compileClassVarDec() {
         List<CSTNode> children = new ArrayList<>();
         // 'static' | 'field'
@@ -432,7 +432,10 @@ public class Analyzer {
         } else {
             throw new RuntimeException("Parse error: expected static or final but got " + tokens.peek().lexeme);
         }
-        // const ?
+        // const?
+        if (tokens.peek().equals(CONST)){
+            children.add(consumeIntoCSTNode(CONST));
+        }
         // type
         children.add(compileType());
         // varName

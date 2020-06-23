@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Tokenizer {
 
-    public static final List<String> keywords = List.of("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return");
+    public static final List<String> keywords = List.of("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return", "const");
 
     public static final List<Character> symbols = List.of('{', '}', '(', ')', ',', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', '~', '|', '<', '>', '=');
 
