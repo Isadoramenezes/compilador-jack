@@ -432,8 +432,10 @@ public class Analyzer {
         } else {
             throw new RuntimeException("Parse error: expected static or final but got " + tokens.peek().lexeme);
         }
-        // const Na Duvida
-        children.add(compileConst(const));
+        // const?
+        if (tokens.peek().equals(CONST)){
+            children.add(consumeIntoCSTNode(CONST));
+        }
         // type
         children.add(compileType());
         // varName
@@ -449,22 +451,6 @@ public class Analyzer {
     }
 
     private CSTNode compileType() {
-        // 'int' | 'char' | 'boolean' | className
-        if (tokens.peek().equals(INT)) {
-            return consumeIntoCSTNode(INT);
-        } else if (tokens.peek().equals(CHAR)) {
-            return consumeIntoCSTNode(CHAR);
-        } else if (tokens.peek().equals(BOOLEAN)) {
-            return consumeIntoCSTNode(BOOLEAN);
-        } else if (tokens.peek().type.equals(IDENTIFIER)) {
-            return consumeIntoCSTNode(IDENTIFIER);
-        } else {
-            throw new RuntimeException("Parse error: expected int, char, boolean or IDENTIFIER but got " + tokens.peek());
-        }
-    }
-
-// Add Novo 4 questão 
-    private CSTNode compileConst() {
         // 'int' | 'char' | 'boolean' | className
         if (tokens.peek().equals(INT)) {
             return consumeIntoCSTNode(INT);
