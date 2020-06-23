@@ -82,4 +82,17 @@ class CSTTest {
         System.out.println(xml);
     }
 
+    @Test
+    void constroiArvoreSintaticaDeUmClasseComDeclaracaoDeVariavelComConstEUnderscore() {
+        String code = "class NomeDaClasse { static const int x_y_z; }";
+        Tokenizer tokenizer = new Tokenizer();
+        List<Token> tokens = tokenizer.tokenize(code);
+
+        Analyzer analyzer = new Analyzer(tokens);
+        CSTNode node = analyzer.parse();
+
+        String xml = node.toXML();
+        System.out.println(xml);
+    }
+
 }
