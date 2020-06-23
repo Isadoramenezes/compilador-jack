@@ -51,8 +51,25 @@ class TokenizerTest {
         final List<Token> tokens = tokenizer.tokenize(code);
 
         assert tokens.size() == 4;
-
-
+        assert tokens.get(0).type == KEYWORD;
+        assert tokens.get(1).type == IDENTIFIER;
+        assert tokens.get(2).type == SYMBOL;
+        assert tokens.get(3).type == SYMBOL;
     }
+
+    @Test
+    public void testeIdentificadorComUnderscoreEComKeywords() {
+        final Tokenizer tokenizer = new Tokenizer();
+        final String code = "class int_uma_nova_class_muito_bonitinha_class { }";
+        final List<Token> tokens = tokenizer.tokenize(code);
+
+        assert tokens.size() == 4;
+        assert tokens.get(0).type == KEYWORD;
+        assert tokens.get(1).type == IDENTIFIER;
+        assert tokens.get(2).type == SYMBOL;
+        assert tokens.get(3).type == SYMBOL;
+    }
+
+
 
 }

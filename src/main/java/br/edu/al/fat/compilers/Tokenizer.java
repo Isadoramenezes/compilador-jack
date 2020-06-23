@@ -35,6 +35,7 @@ public class Tokenizer {
                 tokens.add(new Token(TokenType.STRING_CONSTANT, code.substring(stringStart + 1, stringEnd)));
                 continue;
             }
+           
             // Symbol
             if (symbols.contains(code.charAt(current))) {
                 tokens.add(new Token(TokenType.SYMBOL, code.charAt(current) + ""));
@@ -43,8 +44,13 @@ public class Tokenizer {
             // Keyword
             for (String keyword : keywords) {
                 if (code.startsWith(keyword, current)) {
+                    System.out.println(keyword);
+                    System.out.println(code.charAt(current));
+
                     int keywordLength = keyword.length();
-                    if (!Character.isLetterOrDigit(code.charAt(current + keywordLength))) {
+                    if((code.charAt(current+keywordLength) != ' ' ) && !symbols.contains(code.charAt(current+keywordLength))){
+                        continue;
+                    } else if (!Character.isLetterOrDigit(code.charAt(current + keywordLength))) {
                         tokens.add(new Token(TokenType.KEYWORD, keyword));
                         current += keywordLength;
                         continue;
@@ -69,6 +75,7 @@ public class Tokenizer {
                 current = identifierEnd-2;
                 continue;
             }
+            
             // IntegerConstant
             if (Character.isDigit(code.charAt(current))) {
                 int intStart = current;

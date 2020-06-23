@@ -147,4 +147,20 @@ class AnalyzerTest {
         Analyzer analyzer = new Analyzer(tokens);
         analyzer.parse();
     }
+
+    @Test
+    public void testeCodigoComConstEUnderscore() {
+        Tokenizer tokenizer = new Tokenizer();
+        List<Token> tokens = tokenizer.tokenize(
+                "class Minha_Classe {" +
+                "field int a;" +
+                "field const int b;" +
+                "function int soma (int x, int y){" +
+                "return x + y;" +
+                "}" +
+                "}"
+        );
+        Analyzer analyzer = new Analyzer(tokens);
+        analyzer.parse();
+    }
 }
