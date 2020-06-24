@@ -44,9 +44,6 @@ public class Tokenizer {
             // Keyword
             for (String keyword : keywords) {
                 if (code.startsWith(keyword, current)) {
-                    System.out.println(keyword);
-                    System.out.println(code.charAt(current));
-
                     int keywordLength = keyword.length();
                     if((code.charAt(current+keywordLength) != ' ' ) && !symbols.contains(code.charAt(current+keywordLength))){
                         continue;
